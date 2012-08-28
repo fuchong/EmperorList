@@ -2,25 +2,31 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title></title>
+    <title>Emperor</title>
+    <!--页面编码-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--initial-scale初始缩放比例,maximum-scale允许缩放的最大比例-->
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <!--设置工程是否全屏运行-->
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--设置状态栏的style(black-translucent,black,default)-->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--用户是否可以手动缩 (no,yes)-->
     <meta name=”viewport” content=”user-scalable=no, width=device-width” />
+    <!--设置页面宽度-->
     <meta name="viewport" content="width=320"/>
-    <meta name="MobileOptimized" content="320"/>
-    <meta name="copyright" content="Copyright"/>
+    <!--描述标签-->
     <meta name="description" content="Emperor"/>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--不自动检测有可能是电话号码的数字-->
     <meta name="format-detection" content="telephone=no"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script type="text/javascript" src='javascripts/jquery-1.7.2.min.js'></script>
     <script type="text/javascript" src='javascripts/underscore-min.js'></script>
     <script type="text/javascript" src='javascripts/backbone-min.js'></script>
     <script type="text/javascript" src="javascripts/emperor.js"></script>
     <script type="text/javascript" src="javascripts/handlebars-1.0.0.beta.6.js"></script>
+    <!--页面最大宽度是320时加载iphonestyle.css-->
     <link rel="stylesheet" media="screen and (max-width: 320px)" href="stylesheets/iphonestyle.css">
+    <!--页面最小宽度是1024时加载style.css-->
     <link rel="stylesheet" media="screen and (min-width: 1024px)" href="stylesheets/style.css">
     <script id="emperoritem" type="text/x-handlebars-template">
         <p style="text-align:center;"><input type='button'name="save" value='添加' id="addUserButton"></p>
