@@ -12,6 +12,16 @@ body {
 a {
     color: #c75f3e;
 }
+.listView{
+    width: 300px;
+    /*height: 410px;*/
+    height: 100%;
+    padding-top: 10px;
+    margin: 20px auto;
+    -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
+    background: url(../images/backgroundimg.png) ;
+    background-size: contain;
+}
 label{
     padding-right: 10px;
     padding-left: 10px;
@@ -102,17 +112,6 @@ th.specalt {
     border-top: 0;
     font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #797268;
-}
-
-.listView{
-    width: 300px;
-    /*height: 410px;*/
-    height: 100%;
-    padding-top: 10px;
-    margin: 20px auto;
-    -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
-    background: url(../images/backgroundimg.png) ;
-    background-size: contain;
 }
 form {
     width: 280px;
