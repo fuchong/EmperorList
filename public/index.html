@@ -4,16 +4,29 @@
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name=”viewport” content=”user-scalable=no, width=device-width” />
+    <meta name="viewport" content="width=320"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="copyright" content="Copyright"/>
+    <meta name="description" content="Emperor"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script type="text/javascript" src='javascripts/jquery-1.7.2.min.js'></script>
     <script type="text/javascript" src='javascripts/underscore-min.js'></script>
     <script type="text/javascript" src='javascripts/backbone-min.js'></script>
     <script type="text/javascript" src="javascripts/emperor.js"></script>
     <script type="text/javascript" src="javascripts/handlebars-1.0.0.beta.6.js"></script>
-    <link href="stylesheets/style.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen and (max-width: 320px)" href="stylesheets/iphonestyle.css">
+    <link rel="stylesheet" media="screen and (min-width: 1000px)" href="stylesheets/style.css">
+    <!--<link href="stylesheets/style.css" rel="stylesheet">-->
     <script id="emperoritem" type="text/x-handlebars-template">
         <p style="text-align:center;"><input type='button'name="save" value='添加' id="addUserButton"></p>
            <table  id="emperorTable" cellspacing="0">
-               <tr><th scope="col"  class="nobg">姓名</th><th scope="col">庙号</th><th scope="col">谥号</th><th scope="col">年号</th></tr>
+               <tr><th scope="col" >姓名</th><th scope="col">庙号</th><th scope="col">谥号</th><th scope="col">年号</th></tr>
            </table>
     </script>
     <script id="emperor" type="text/x-handlebars-template">
