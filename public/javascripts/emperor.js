@@ -13,19 +13,19 @@ var emperor = {
 (function (emperor) {
 
     emperor.AppRouter = Backbone.Router.extend({
-        routes: {
+        routes:{
             "addEmperor":"addEmperor",
-            "*actions": "defaultRoute"
+            "*actions":"defaultRoute"
         },
-        addEmperor: function(){
+        addEmperor:function () {
             var emperorFormView = new emperor.EmperorFormView;
             var emperorItem = new emperor.Emperor();
             emperorFormView.model = emperorItem;
-            emperorFormView.render().$el.appendTo('#app');
+            emperorFormView.render().$el.appendTo('article');
         },
-        defaultRoute:function(){
+        defaultRoute:function () {
             var emperorCollectionView = new emperor.EmperorCollectionView;
-            emperorCollectionView.render().$el.appendTo('#app');
+            emperorCollectionView.render().$el.appendTo('article');
         }
     });
 
@@ -47,7 +47,7 @@ var emperor = {
             this.model.on('add', this.addToView);
         },
         render:function () {
-            $('#app').empty();
+            $('article').empty();
             var source = $("#emperoritem").html();
             var template = Handlebars.compile(source);
             var html = template();
@@ -73,15 +73,17 @@ var emperor = {
         tagName:'div',
         className:'listView',
         render:function () {
-            $('#app').empty();
+            $('article').empty();
             var source = $("#addEmperor").html();
             var template = Handlebars.compile(source);
             var html = template();
             $(this.el).append(html);
+            this.delegateEvents(this.events);
             return this;
         },
         events:{
-            'change #userName, #miaohao, #yihao, #nianhao':'change',
+            'change #userName, #miaohao, #yihao, #nianhao,#year':'change',
+//            'change #emperorImg':'upload',
             'click #save':'save'
 
         },
@@ -99,13 +101,88 @@ var emperor = {
                 }
             });
         },
+//        upload:function (e) {
+//            console.log(e.target.files[0].size);
+//            var file = e.target.files[0];
+//            var img = document.createElement('img');
+//            img.classList.add('obj');
+//            img.file = file;
+//            $(img).appendTo($('#showImage'));
+//            var reader = new FileReader();
+//            reader.onload = (function (aImg) {
+//                return function (e) {
+//                    aImg.src = e.target.result;
+//                };
+//            })(img);
+//            reader.readAsDataURL(file);
+//            var button = '<input type="button" value="提交" id="submit1">';
+//            $(button).appendTo($('#showImage'));
+//            $('#submit1').bind("click", function () {
+//                emperor.sendFiles();
+//            });
+//        },
         change:function () {
             this.model.set('userName', $("#userName").val());
             this.model.set('miaohao', $("#miaohao").val());
             this.model.set('yihao', $("#yihao").val());
             this.model.set('nianhao', $("#nianhao").val());
+            this.model.set('year', $("#year").val());
         }
     });
 
+    emperor.sendFiles = function () {
+//        $("#emperorImg")[0].files[0]
+        //var imgs = document.querySelectorAll(".obj");
+        new emperor.FileUpload('', $("#emperorImg")[0].files[0]);
+    }
+    emperor.FileUpload = function (img,file) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/upload?fileName=" + file.name + '&fileSize=' + file.size);
+        xhr.overrideMimeType('text/plain; charset=x-user-defined-binary');
+        xhr.onload = function (e) {
+
+        };
+// Listen to the upload progress.
+        var progress = '<progress min="0" max="100" value="0">0% complete</progress>';
+        $(progress).appendTo($('#proess'));
+        var progressBar = document.querySelector('progress');
+        console.log(progressBar);
+        console.log(progress);
+        xhr.upload.onprogress = function (e) {
+            if (e.lengthComputable) {
+                progressBar.value = (e.loaded / e.total) * 100;
+            }
+        };
+        xhr.send(file);
+    }
 
 }(emperor));
+
+//文件上传
+/*
+function sendFiles() {
+    var imgs = document.querySelectorAll(".obj");
+    new FileUpload(imgs[0], imgs[0].file);
+}
+function FileUpload(img, file) {
+    console.log(">>>>>>>" + file);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:3000/upload?fileName=" + file.name + '&fileSize=' + file.size);
+    xhr.overrideMimeType('text/plain; charset=x-user-defined-binary');
+    xhr.onload = function (e) {
+
+    };
+// Listen to the upload progress.
+    var progress = '<progress min="0" max="100" value="0">0% complete</progress>';
+    $(progress).appendTo($('#proess'));
+    var progressBar = document.querySelector('progress');
+    console.log(progressBar);
+    console.log(progress);
+    xhr.upload.onprogress = function (e) {
+        if (e.lengthComputable) {
+            progressBar.value = (e.loaded / e.total) * 100;
+        }
+    };
+    xhr.send(file);
+}
+    */

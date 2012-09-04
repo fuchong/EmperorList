@@ -13,7 +13,7 @@ var express = require('express')
 var express = require("express");
 var app = express();
 var userProvider = new UserProvider('localhost', 27017);
-app.use(express.bodyParser());
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -42,6 +42,10 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+
+
+//app.get('/upload', routes.upload.ss);
+app.post('/upload', routes.upload.ss);
 
 app.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

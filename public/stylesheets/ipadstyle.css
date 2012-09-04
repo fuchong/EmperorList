@@ -2,6 +2,15 @@ body {
     font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #4f6b72;
     background: #E6EAE9;
+    width:1024px;
+    margin: auto;
+    -webkit-text-size-adjust:none;
+    -webkit-user-select: none;                /* disable cut copy paste */
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+    -webkit-appearance: none;
+    overflow: hidden;
 }
 a {
     color: #c75f3e;
@@ -32,6 +41,14 @@ nav ul{
 }
 nav ul li {
     padding: 20px;
+    -webkit-box-flex: 1;
+}
+.listView{
+    width:900px;
+    padding-top: 10px;
+    margin: 20px auto;
+    -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
+    background: url(../images/backgroundimg.png) center center no-repeat #fff;
 }
 #content{
     display: -webkit-box;
@@ -58,19 +75,23 @@ label,input {
 }
 input {
     width:250px;
+    -webkit-text-size-adjust:none;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
 }
 #save{
-    width:100px;
+    width:140px;
     margin: auto;
 }
 #addUserButton{
-    width:100px;
+    width:140px;
     margin: auto;
 }
 #emperorTable {
-    width: 600px;
+    width: 800px;
     padding: 0;
-    margin: 0;
     background: rgba(255,255,255,0.8);
     margin: 10px auto;
     display: -webkit-box;
@@ -78,6 +99,13 @@ input {
     -webkit-box-pack: center;
     -webkit-box-align: center;
 }
+caption {
+    padding: 0 0 5px 0;
+    width: 700px;
+    font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    text-align: right;
+}
+
 th {
     font: bold 18px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #4f6b72;
@@ -86,9 +114,10 @@ th {
     text-transform: uppercase;
     text-align: left;
     padding: 6px 6px 6px 12px;
-    width:150px;
+    width:190px;
     text-align: center;
 }
+
 td {
     border: 1px solid #C1DAD7;
     font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
@@ -97,24 +126,17 @@ td {
     text-align: center;
     word-break:break-all;
 }
-.listView{
-    width: 1000px;
-    height: 600px;
-    padding-top: 10px;
-    margin: 20px auto;
-    -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
-    background: url(../images/backgroundimg.png) center center no-repeat #fff;
-}
+
 form {
     width: 400px;
     height: auto;
     background: rgba(255, 255, 255,0.8);
-    margin: 100px auto;
+    margin: 50px auto;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
     -webkit-box-align: center;
 }
 .emperorInfo{
-    padding-top: 20px;
+    padding-top: 10px;
 }

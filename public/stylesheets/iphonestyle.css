@@ -12,15 +12,59 @@ body {
 a {
     color: #c75f3e;
 }
+ul li{
+    list-style: none;
+}
+header{
+    text-align: center;
+    font: normal 30px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+nav{
+    width:300px;
+    height: 30px;
+    margin: 10px auto;
+    text-align: center;
+    border: 1px inset black;
+    border-radius: 5px;
+    -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
+    font: normal 20px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+
+}
+nav ul{
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+nav ul li {
+    padding: 5px;
+    -webkit-box-flex: 1;
+}
+#content{
+    display: -webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+footer{
+    text-align: center;
+    font: normal 15px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+.navator {
+    -webkit-box-flex: 1;
+}
+.articlecontent {
+    -webkit-box-flex: 4;
+}
 .listView{
     width: 300px;
-    /*height: 410px;*/
     height: 100%;
     padding-top: 10px;
     margin: 20px auto;
     -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
-    background: url(../images/backgroundimg.png) ;
-    background-size: contain;
+    background: url(../images/backgroundimg.png) center center no-repeat #fff;
 }
 label{
     padding-right: 10px;
@@ -30,7 +74,7 @@ label,input {
     font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 }
 input {
-    width:170px;
+    width:140px;
     -webkit-text-size-adjust:none;
     -webkit-touch-callout: none;
     -webkit-user-drag: none;
@@ -49,27 +93,17 @@ input {
     width: 280px;
     padding: 0;
     margin: 0;
-    background: #000;
-    opacity: 0.8;
+    background: rgba(255,255,255,0.8);
     margin: 10px auto;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
     -webkit-box-align: center;
 }
-caption {
-    padding: 0 0 5px 0;
-    width: 700px;
-    font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-    text-align: right;
-}
-
 th {
     font: bold 18px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #4f6b72;
-    border-right: 1px solid #C1DAD7;
-    border-bottom: 1px solid #C1DAD7;
-    border-top: 1px solid #C1DAD7;
+    border: 1px solid #C1DAD7;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: left;
@@ -78,46 +112,19 @@ th {
     text-align: center;
 }
 
-th.nobg {
-    border-top: 0;
-    border-left: 0;
-    border-right: 1px solid #C1DAD7;
-    background: none;
-}
-
 td {
     border-right: 1px solid #C1DAD7;
     border-bottom: 1px solid #C1DAD7;
-    background: #fff;
     font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     padding: 6px 6px 6px 12px;
     color: #4f6b72;
     text-align: center;
     word-break:break-all;
 }
-
-td.alt {
-    background: #F5FAFA;
-    color: #797268;
-}
-
-th.spec {
-    border-left: 1px solid #C1DAD7;
-    border-top: 0;
-    font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-}
-
-th.specalt {
-    border-left: 1px solid #C1DAD7;
-    border-top: 0;
-    font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-    color: #797268;
-}
 form {
     width: 280px;
     height: auto;
-    background: #f1f2f3;
-    opacity: 0.8;
+    background: rgba(255, 255, 255,0.8);
     margin: 50px auto;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
