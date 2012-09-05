@@ -57,7 +57,7 @@ nav ul li {
     padding-top: 10px;
     margin: 20px;
     -webkit-box-shadow:5px 2px 10px 5px rgba(0, 0, 0, .7);
-    background: url(../images/backgroundimg.png) center center no-repeat #fff;
+    background:  center center no-repeat #fff;
 }
 footer{
     text-align: center;
@@ -130,4 +130,7 @@ form {
 }
 .emperorInfo{
     padding-top: 10px;
+}
+#status{
+    font: 20px bold;
 }

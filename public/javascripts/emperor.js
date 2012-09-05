@@ -12,6 +12,7 @@ var emperor = {
 //$(emperor.init);
 (function (emperor) {
 
+    var urlback;
     emperor.AppRouter = Backbone.Router.extend({
         routes:{
             "addEmperor":"addEmperor",
@@ -42,16 +43,21 @@ var emperor = {
         tagName:'div',
         className:'listView',
         initialize:function () {
-            this.model = new emperor.EmperorCollection;
-            this.model.fetch({add:true});
-            this.model.on('add', this.addToView);
+            if(navigator.onLine){
+                this.model = new emperor.EmperorCollection;
+                this.model.fetch({add:true});
+                this.model.on('add', this.addToView);
+            }
+
         },
         render:function () {
             $('article').empty();
+            new emperor.drawBackground();
             var source = $("#emperoritem").html();
             var template = Handlebars.compile(source);
             var html = template();
             $(this.el).append(html);
+
             return this;
         },
         addToView:function (data) {
@@ -74,6 +80,7 @@ var emperor = {
         className:'listView',
         render:function () {
             $('article').empty();
+            new emperor.drawBackground();
             var source = $("#addEmperor").html();
             var template = Handlebars.compile(source);
             var html = template();
@@ -130,9 +137,28 @@ var emperor = {
         }
     });
 
+    emperor.drawBackground = function(){
+        var url;
+       var canvas=document.createElement('canvas');
+        canvas.width=500;
+        canvas.height=500;
+        var context = canvas.getContext("2d");
+        context.globalAlpha = 0.5;
+        var myImage = new Image();
+        myImage.src = "./images/backgroundimg.png";
+        myImage.onload = function()
+        {
+            context.drawImage(myImage,0,0,500, 500);
+            url= canvas.toDataURL();
+            $('.listView').css({
+                'background-image':'url('+url+')'
+            });
+        };
+
+    }
+
     emperor.sendFiles = function () {
-//        $("#emperorImg")[0].files[0]
-        //var imgs = document.querySelectorAll(".obj");
+//
         new emperor.FileUpload('', $("#emperorImg")[0].files[0]);
     }
     emperor.FileUpload = function (img,file) {
@@ -158,31 +184,3 @@ var emperor = {
 
 }(emperor));
 
-//文件上传
-/*
-function sendFiles() {
-    var imgs = document.querySelectorAll(".obj");
-    new FileUpload(imgs[0], imgs[0].file);
-}
-function FileUpload(img, file) {
-    console.log(">>>>>>>" + file);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:3000/upload?fileName=" + file.name + '&fileSize=' + file.size);
-    xhr.overrideMimeType('text/plain; charset=x-user-defined-binary');
-    xhr.onload = function (e) {
-
-    };
-// Listen to the upload progress.
-    var progress = '<progress min="0" max="100" value="0">0% complete</progress>';
-    $(progress).appendTo($('#proess'));
-    var progressBar = document.querySelector('progress');
-    console.log(progressBar);
-    console.log(progress);
-    xhr.upload.onprogress = function (e) {
-        if (e.lengthComputable) {
-            progressBar.value = (e.loaded / e.total) * 100;
-        }
-    };
-    xhr.send(file);
-}
-    */

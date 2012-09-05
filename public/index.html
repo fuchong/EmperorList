@@ -1,6 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html manifest="offline.manifest">
 <head>
     <title>Emperor</title>
     <!--页面编码-->
@@ -12,7 +11,7 @@
     <!--设置状态栏的style(black-translucent,black,default)-->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!--用户是否可以手动缩 (no,yes)-->
-    <meta name=”viewport” content=”user-scalable=no, width=device-width” />
+    <meta name="viewport" content="user-scalable=no, width=device-width"/>
     <!--设置页面宽度-->
     <!--<meta name="viewport" content="width=320"/>-->
     <!--描述标签-->
@@ -24,6 +23,7 @@
     <script type="text/javascript" src='javascripts/backbone-min.js'></script>
     <script type="text/javascript" src="javascripts/emperor.js"></script>
     <script type="text/javascript" src="javascripts/handlebars-1.0.0.beta.6.js"></script>
+    <script type="text/javascript" src="javascripts/h5utils.js"></script>
     <!--页面最大宽度是320时加载iphonestyle.css-->
     <link rel="stylesheet" media="screen and (max-width: 320px) and (orientation:portrait)" href="stylesheets/iphonestyle.css">
     <link rel="stylesheet" media="screen and (min-width: 330px) and (max-width: 480px) and (orientation:landscape)" href="stylesheets/iphonehengstyle.css">
@@ -40,7 +40,7 @@
     <link rel="stylesheet" media="screen and (max-width: 1024px) and (min-width:700px) and (orientation:portrait)" href="stylesheets/ipadVerticlestyle.css">
     <script id="emperoritem" type="text/x-handlebars-template">
         <p style="text-align:center;"><input type='button'name="save" value='添加' id="addUserButton"></p>
-        <!--<audio src="songs/music.mp3" autoplay="autoplay">您的浏览器不支持 audio 标签。</audio>-->
+        <audio src="songs/music.mp3" autoplay="autoplay">您的浏览器不支持 audio 标签。</audio>
            <table  id="emperorTable" cellspacing="0">
                <tr><th scope="col" >姓名</th><th scope="col">庙号</th><th scope="col">谥号</th><th scope="col">年号</th></tr>
            </table>
@@ -80,17 +80,25 @@
                 <li><a>明朝经济</a></li>
             </ul>
         </nav>
-        <article class="articlecontent"></article>
+
+        <article class="articlecontent">
+
+        </article>
     </div>
-<footer>@copyright jiangli</footer>
+<footer> <p>当前状态:<span id="status"></span></p></footer>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-//        var emperorCollectionView = new reader.EmperorCollectionView;
-//        emperorCollectionView.render().$el.appendTo('.app');
+        addEvent(window, 'online', online);
+        addEvent(window, 'offline', online);
+        online({ type: 'ready' });
         var appRouter = new emperor.AppRouter;
         Backbone.history.start();
     });
+    function online(event) {
+        var statusElem  = document.getElementById('status');
+        statusElem.innerHTML = navigator.onLine ? '在线' : '离线';
+    }
 </script>
 </body>
 </html>
