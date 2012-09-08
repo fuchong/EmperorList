@@ -12,7 +12,6 @@ var emperor = {
 //$(emperor.init);
 (function (emperor) {
 
-    var urlback;
     emperor.AppRouter = Backbone.Router.extend({
         routes:{
             "addEmperor":"addEmperor",
@@ -47,8 +46,9 @@ var emperor = {
                 this.model = new emperor.EmperorCollection;
                 this.model.fetch({add:true});
                 this.model.on('add', this.addToView);
+            }else{
+               new localdatabase.findAllEmperor();
             }
-
         },
         render:function () {
             $('article').empty();
@@ -95,18 +95,24 @@ var emperor = {
 
         },
         save:function () {
-            this.model.save(null, {
-                success:function (model, res) {
-                    if (!res.isSuccess) {
-                        $("#err").html(res.info);
-                    } else {
-                        self.location = '#defaultRoute';
+            if(navigator.onLine){
+                this.model.save(null, {
+                    success:function (model, res) {
+                        if (!res.isSuccess) {
+                            $("#err").html(res.info);
+                        } else {
+                            self.location = '#defaultRoute';
+                        }
+                    },
+                    error:function () {
+                        $("#err").html("添加用户失败");
                     }
-                },
-                error:function () {
-                    $("#err").html("添加用户失败");
-                }
-            });
+                });
+            }else{
+                new localdatabase.insertEmperor(this.model.toJSON());
+                self.location = '#defaultRoute';
+            }
+
         },
 //        upload:function (e) {
 //            console.log(e.target.files[0].size);

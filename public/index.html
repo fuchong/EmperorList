@@ -24,6 +24,7 @@
     <script type="text/javascript" src="javascripts/emperor.js"></script>
     <script type="text/javascript" src="javascripts/handlebars-1.0.0.beta.6.js"></script>
     <script type="text/javascript" src="javascripts/h5utils.js"></script>
+    <script type="text/javascript" src="javascripts/localdatabase.js"></script>
     <!--页面最大宽度是320时加载iphonestyle.css-->
     <link rel="stylesheet" media="screen and (max-width: 320px) and (orientation:portrait)" href="stylesheets/iphonestyle.css">
     <link rel="stylesheet" media="screen and (min-width: 330px) and (max-width: 480px) and (orientation:landscape)" href="stylesheets/iphonehengstyle.css">
@@ -89,6 +90,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        new localdatabase.createDatabase();
         addEvent(window, 'online', online);
         addEvent(window, 'offline', online);
         online({ type: 'ready' });
