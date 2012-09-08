@@ -162,7 +162,6 @@ var emperor = {
         };
 
     }
-
     emperor.sendFiles = function () {
 //
         new emperor.FileUpload('', $("#emperorImg")[0].files[0]);
