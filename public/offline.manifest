@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#version 7.0
+#version 1.0
  javascripts/h5utils.js
  javascripts/jquery-1.7.2.min.js
  javascripts/underscore-min.js
