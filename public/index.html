@@ -23,7 +23,6 @@
     <script type="text/javascript" src='javascripts/backbone-min.js'></script>
     <script type="text/javascript" src="javascripts/emperor.js"></script>
     <script type="text/javascript" src="javascripts/handlebars-1.0.0.beta.6.js"></script>
-    <script type="text/javascript" src="javascripts/h5utils.js"></script>
     <script type="text/javascript" src="javascripts/localdatabase.js"></script>
     <!--页面最大宽度是320时加载iphonestyle.css-->
     <link rel="stylesheet" media="screen and (max-width: 320px) and (orientation:portrait)" href="stylesheets/iphonestyle.css">
@@ -91,8 +90,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
         new localdatabase.createDatabase();
-        addEvent(window, 'online', online);
-        addEvent(window, 'offline', online);
+        window.addEventListener('online',online,false);
+        window.addEventListener('offline',online,false);
         online({ type: 'ready' });
         var appRouter = new emperor.AppRouter;
         Backbone.history.start();
